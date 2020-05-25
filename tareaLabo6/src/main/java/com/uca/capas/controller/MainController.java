@@ -57,7 +57,16 @@ public class MainController {
 				e.printStackTrace();
 			}
 			//mav.addObject("contribuyente", new Contribuyente());
-		} else mav.setViewName("index");
+		} else {
+			List<Importancia> importancias = null;
+			try {
+				importancias = importanciaService.findAll();
+				mav.addObject("importanciaL", importancias);
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+			mav.setViewName("index");
+		}
 		return mav;
 	}
 	
