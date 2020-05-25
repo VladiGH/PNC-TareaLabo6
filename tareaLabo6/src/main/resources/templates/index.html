@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tarea Laboratorio 6</title>
+</head>
+<body>
+	<form th:action="@{/guardarContribuyente}" th:object="${contribuyente}" method="post">
+	 	<br>
+	 	<label>Importancia</label>
+		<th>
+			<select th:field="*{importancia.codigoImportancia}">
+			<option th:each ="imp: ${importanciaL}" th:value="${imp.codigoImportancia}"
+					th:text ="${imp.importancia}">
+			</option>
+			</select>
+		</th>
+		<br> 
+		<br>
+		<label for="nombre">Nombre   </label>
+		<input th:field = "*{nombre}" id="nombre" type="text" placeholder="Ingresa el nombre" name="nombre" />
+		<span th:errors= "*{nombre}" style="color: #E81505"></span>
+			<br>
+			<br>
+	    <label for="apellido">Apellido   </label>
+		<input th:field="*{apellido}" id="apellido" type="text" placeholder="Ingresa el apellido"  name="apellido" />
+		<span th:errors="*{apellido}" style="color: #E81505"></span>
+			<br>
+			<br>
+	    <label for="nit">NIT  </label>
+		<input th:field="*{nit}" id="carne" type="text" placeholder="Ingresa el NIT"  name="nit" />
+		<span th:errors="*{nit}" style="color: #E81505"></span>
+	    
+	    <br><br>
+	    <input type="submit" value="Guardar" />
+	
+	</form>
+	<br>
+	<input type="button" onClick = "location.href='/listado';" value="Ver Contribuyentes">
+</body>
+</html>
